@@ -1,3 +1,4 @@
+/* Ensure body and stage fill screen */
 html, body {
   margin: 0;
   height: 100%;
@@ -5,6 +6,7 @@ html, body {
   background: #2b001f;
 }
 
+/* Center everything and make it scale */
 .stage {
   width: 100%;
   height: 100%;
@@ -14,15 +16,15 @@ html, body {
   position: relative;
 }
 
-
+/* Heart outline or particle container */
 .heart {
   position: relative;
-  width: 95vmin;
-  height: 95vmin;
+  width: 90vmin; /* use viewport min so it scales */
+  height: 90vmin;
   animation: beat 1s infinite;
 }
 
-/* heartbeat */
+/* Pulse animation */
 @keyframes beat {
   0% { transform: scale(1); }
   25% { transform: scale(1.08); }
@@ -31,7 +33,7 @@ html, body {
   100% { transform: scale(1); }
 }
 
-/* outline heart particles */
+/* Heart particles (outline) */
 .dot {
   position: absolute;
   width: 0.5vmin;
@@ -43,14 +45,14 @@ html, body {
     0 0 2vmin hotpink;
 }
 
-/* center name */
+/* Name in front, cursive, glowing, pulsing */
 .name {
   position: absolute;
-  top:45%;
+  top: 45%;
   left: 40%;
-  transform: translate(-50%, -52%);
+  transform: translate(-50%, -50%);
   font-family: "Dancing Script", cursive;
-  font-size: 6vmin;
+  font-size: 8vmin; /* larger on small screens automatically */
   color: white;
   letter-spacing: 0.1vmin;
   text-shadow:
@@ -63,7 +65,7 @@ html, body {
   animation: beat 1s infinite;
 }
 
-/* petals */
+/* Petals */
 .petal {
   position: fixed;
   top: -2vmin;
@@ -76,12 +78,7 @@ html, body {
   box-shadow: 0 0 1vmin hotpink;
 }
 
-@keyframes fall {
-  to {
-    transform: translateY(110vh) rotate(360deg);
-  }
-}
-
+/* Stars */
 .star {
   position: fixed;
   width: 1px;
@@ -101,4 +98,28 @@ html, body {
 @keyframes moveTwinkle {
   0% { transform: translate(0, 0); }
   100% { transform: translate(200vw, 200vh); }
+}
+
+/* Mobile-specific adjustments */
+@media screen and (max-width: 600px) {
+  .heart {
+    width: 80vmin;
+    height: 80vmin;
+  }
+
+  .dot {
+    width: 0.7vmin;
+    height: 0.7vmin;
+  }
+
+  .name {
+    font-size: 10vmin; /* scale text on small screens */
+    top: 47%; /* fine-tune center for mobile */
+    left: 50%;
+  }
+
+  .petal {
+    width: 1.2vmin;
+    height: 1.8vmin;
+  }
 }
